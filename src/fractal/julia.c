@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 09:23:23 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 15:13:57 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 15:19:50 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	julia_draw(t_fractal *fr)
 	reset_buffer(fr->buffer);
 	c.img = fr->julia_img;
 	c.real = fr->julia_real;
-	printf("%lf %lf\n", fr->julia_real, fr->julia_img);
 	while (++y < WIN_HEIGHT)
 	{
 		x = -1;

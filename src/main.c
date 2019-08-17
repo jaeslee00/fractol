@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 16:00:23 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 15:12:30 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 15:19:34 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,6 @@ int		key_press(int key, void *param)
 
 void	get_fractal(t_fractal *fr, char *argv)
 {
-	int	bpp;
-	int	s_l;
-	int	endian;
-
 	if (!ft_strcmp(argv, "mandelbrot"))
 	{
 		fr->fract = mandelbrot_draw;
@@ -88,7 +84,7 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		get_fractal(&fr, argv[1]);
-		init_mlx(&fr);
+		init_mlx(&fr, argv[1]);
 		fr.init_fract(&fr);
 		fr.fract(&fr);
 		mlx_hook(fr.win_ptr, KEY_PRESS, 0, key_press, &fr);

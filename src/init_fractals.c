@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:53:42 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 15:11:27 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 15:18:53 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,12 @@ void	init_buringship(t_fractal *fr)
 	fr->zoom = 1.0;
 }
 
-void	init_mlx(t_fractal *fr)
+void	init_mlx(t_fractal *fr, char *argv)
 {
+	int		bpp;
+	int		s_l;
+	int		endian;
+
 	fr->mlx_ptr = mlx_init();
 	if (!(fr->win_ptr =
 		mlx_new_window(fr->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, argv)))
