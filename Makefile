@@ -4,6 +4,7 @@ SRC =	main.c \
 		key_inputs.c \
 		mouse_inputs.c \
 		draw_to_buffer.c \
+		init_fractals.c \
 		fractal/mandelbrot.c \
 		fractal/julia.c \
 		fractal/burning_ship.c

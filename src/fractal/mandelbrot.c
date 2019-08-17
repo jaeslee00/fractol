@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 01:37:32 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 14:00:23 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 15:13:45 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		mandelbrot_set(t_complex *c)
 {
 	t_complex	z;
 	t_complex	z2;
-	int		iter;
+	int			iter;
 
 	z.real = 0.0;
 	z.img = 0.0;

@@ -6,13 +6,13 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 16:00:23 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 14:35:36 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 15:12:30 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractal.h"
 
-int	pick_color(int iter)
+int		pick_color(int iter)
 {
 	int color;
 	int	rgb;
@@ -28,8 +28,8 @@ int	pick_color(int iter)
 int		key_press(int key, void *param)
 {
 	t_fractal *fr;
-	fr = param;
 
+	fr = (t_fractal*)param;
 	if (key == ARROW_UP)
 		move(0.0, 0.1, fr);
 	else if (key == ARROW_DOWN)
@@ -52,19 +52,6 @@ int		key_press(int key, void *param)
 	return (0);
 }
 
-int	initialize(t_fractal *fr)
-{
-	ft_bzero(fr, sizeof(t_fractal));
-	fr->real_max = 0.7;
-	fr->real_min = -2.3;
-	fr->img_max = 1.5;
-	fr->img_min = -1.5;
-	fr->zoom = 1.0;
-	fr->julia_real = -0.79;
-	fr->julia_img = 0.15;
-	return (SUCCESS);
-}
-
 void	get_fractal(t_fractal *fr, char *argv)
 {
 	int	bpp;
@@ -72,32 +59,44 @@ void	get_fractal(t_fractal *fr, char *argv)
 	int	endian;
 
 	if (!ft_strcmp(argv, "mandelbrot"))
+	{
 		fr->fract = mandelbrot_draw;
+		fr->init_fract = init_mandelbrot;
+	}
 	else if (!ft_strcmp(argv, "julia"))
+	{
 		(fr->fract) = julia_draw;
-	else if (!ft_strcmp(argv, "burningshit"))
-		fr->fract = burningshit_draw;
+		fr->init_fract = init_julia;
+	}
+	else if (!ft_strcmp(argv, "burningship"))
+	{
+		fr->fract = burningship_draw;
+		fr->init_fract = init_buringship;
+	}
 	else
+	{
+		ft_putendl("usage : ./fractol [fractal_name]");
 		exit(0);
-	fr->mlx_ptr = mlx_init();
-	fr->win_ptr = mlx_new_window(fr->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, argv);
-	fr->img_ptr = mlx_new_image(fr->mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
-	fr->buffer = mlx_get_data_addr(fr->img_ptr, &bpp, &s_l, &endian);
+	}
 }
 
 int		main(int argc, char **argv)
 {
 	t_fractal	fr;
 
+	ft_bzero(&fr, sizeof(t_fractal));
 	if (argc == 2)
 	{
-		initialize(&fr);
 		get_fractal(&fr, argv[1]);
+		init_mlx(&fr);
+		fr.init_fract(&fr);
 		fr.fract(&fr);
 		mlx_hook(fr.win_ptr, KEY_PRESS, 0, key_press, &fr);
 		mlx_hook(fr.win_ptr, MOUSE_PRESS, 0, mouse_press, &fr);
 		mlx_hook(fr.win_ptr, MOUSE_MOVE, 0, mouse_move, &fr);
 		mlx_loop(fr.mlx_ptr);
 	}
+	else
+		ft_putendl("usage : ./fractol [fractal_name]");
 	return (0);
 }

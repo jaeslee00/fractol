@@ -6,21 +6,21 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 12:47:58 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 13:50:49 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 15:13:20 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractal.h"
 
-int		burningshit_set(t_complex *c)
+int		burningship_set(t_complex *c)
 {
 	t_complex	z;
 	t_complex	z2;
-	int		iter;
+	int			iter;
 
 	z.real = c->real;
 	z.img = c->img;
-	z2.real = z.real *z.real;
+	z2.real = z.real * z.real;
 	z2.img = z.img * z.img;
 	iter = -1;
 	while (++iter < MAX_ITER && (z2.real + z2.img < 4))
@@ -33,7 +33,7 @@ int		burningshit_set(t_complex *c)
 	return (iter);
 }
 
-void	burningshit_draw(t_fractal *fr)
+void	burningship_draw(t_fractal *fr)
 {
 	int			color;
 	int			x;
@@ -51,7 +51,7 @@ void	burningshit_draw(t_fractal *fr)
 		c.real = fr->real_min;
 		while (++x < WIN_WIDTH)
 		{
-			color = pick_color(burningshit_set(&c));
+			color = pick_color(burningship_set(&c));
 			pixel_in_buffer((unsigned char*)fr->buffer, x, y, color);
 			c.real += fr->x_scale;
 		}

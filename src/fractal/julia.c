@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 09:23:23 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 14:25:00 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 15:13:57 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int		julia_set(double real, double img, t_complex *c)
 {
 	t_complex	z;
 	t_complex	z2;
-	int		iter;
+	int			iter;
+
 	z.real = real;
 	z.img = img;
 	z2.real = real * real;

@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 09:06:47 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 14:34:42 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 15:11:56 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	zoom(t_fractal *fr, double z)
 	new_height = (fr->img_max - fr->img_min) * z;
 	curr_width = (fr->real_max - fr->real_min);
 	curr_height = (fr->img_max - fr->img_min);
-	fr->real_min -=  0.5 * (new_width - curr_width);
+	fr->real_min -= 0.5 * (new_width - curr_width);
 	fr->img_min -= 0.5 * (new_height - curr_height);
 	fr->real_max = fr->real_min + new_width;
 	fr->img_max = fr->img_min + new_height;
@@ -62,10 +62,5 @@ void	transform_julia(int key, t_fractal *fr)
 
 void	reset(t_fractal *fr)
 {
-	fr->real_max = 0.7;
-	fr->real_min = -2.3;
-	fr->img_max = 1.5;
-	fr->img_min = -1.5;
-	fr->julia_real = -0.79;
-	fr->julia_img = 0.15;
+	fr->init_fract(fr);
 }
