@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 16:00:52 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 13:44:04 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 14:16:45 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@
 # define ESC				53
 # define KEY_PRESS			2
 # define MOUSE_PRESS		5
-# define MOUSE_RELEASE		6
-# define MOUSE_MOVE			12
+# define MOUSE_MOVE			6
 # define ZOOM				1.1
 # define MAX_ITER			100
 # define MOUSE_ON			1
@@ -82,7 +81,10 @@ struct	s_fractal
 
 	double	zoom;
 
-	int		mouse_button;
+	int		mouse_x;
+	int		mouse_y;
+	int		prev_mouse_x;
+	int		prev_mouse_y;
 
 	fractal_set	fract;
 };

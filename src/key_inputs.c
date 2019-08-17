@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 09:06:47 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 11:24:32 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 14:34:42 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void	move(double x, double y, t_fractal *fr)
 	curr_height = (fr->img_max - fr->img_min);
 	dx = curr_width * x;
 	dy = curr_height * y;
-	fr->real_min += dx;
-	fr->img_min += dy;
-	fr->real_max += dx;
-	fr->img_max += dy;
+	fr->real_min -= dx;
+	fr->img_min -= dy;
+	fr->real_max -= dx;
+	fr->img_max -= dy;
 }
 
 void	transform_julia(int key, t_fractal *fr)
@@ -62,13 +62,10 @@ void	transform_julia(int key, t_fractal *fr)
 
 void	reset(t_fractal *fr)
 {
-	fr->x_offset = 0;
-	fr->y_offset = 0;
-	fr->real_max = 1.0;
-	fr->real_min = -2.0;
-	fr->img_max = 1.0;
-	fr->img_min = -1.0;
-	fr->zoom = 1.0;
+	fr->real_max = 0.7;
+	fr->real_min = -2.3;
+	fr->img_max = 1.5;
+	fr->img_min = -1.5;
 	fr->julia_real = -0.79;
 	fr->julia_img = 0.15;
 }

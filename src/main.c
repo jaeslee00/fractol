@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 16:00:23 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 13:44:38 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 14:35:36 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,13 @@ int		key_press(int key, void *param)
 int	initialize(t_fractal *fr)
 {
 	ft_bzero(fr, sizeof(t_fractal));
-	fr->real_max = 1.0;
-	fr->real_min = -2.5;
-	fr->img_max = 1.0;
-	fr->img_min = -1.0;
+	fr->real_max = 0.7;
+	fr->real_min = -2.3;
+	fr->img_max = 1.5;
+	fr->img_min = -1.5;
 	fr->zoom = 1.0;
 	fr->julia_real = -0.79;
 	fr->julia_img = 0.15;
-
 	return (SUCCESS);
 }
 
@@ -96,6 +95,7 @@ int		main(int argc, char **argv)
 		get_fractal(&fr, argv[1]);
 		fr.fract(&fr);
 		mlx_hook(fr.win_ptr, KEY_PRESS, 0, key_press, &fr);
+		mlx_hook(fr.win_ptr, MOUSE_PRESS, 0, mouse_press, &fr);
 		mlx_hook(fr.win_ptr, MOUSE_MOVE, 0, mouse_move, &fr);
 		mlx_loop(fr.mlx_ptr);
 	}

@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 09:23:23 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 13:16:22 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 14:25:00 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ int		julia_set(double real, double img, t_complex *c)
 	t_complex	z;
 	t_complex	z2;
 	int		iter;
-	(void)real;
-	(void)img;
-	z.real = 0;
-	z.img = 0;
-	z2.real = 0;
-	z2.img = 0;
+	z.real = real;
+	z.img = img;
+	z2.real = real * real;
+	z2.img = img * img;
 	iter = -1;
 	while (++iter < MAX_ITER && (z2.real + z2.img < 4))
 	{
@@ -47,6 +45,7 @@ void	julia_draw(t_fractal *fr)
 	reset_buffer(fr->buffer);
 	c.img = fr->julia_img;
 	c.real = fr->julia_real;
+	printf("%lf %lf\n", fr->julia_real, fr->julia_img);
 	while (++y < WIN_HEIGHT)
 	{
 		x = -1;
