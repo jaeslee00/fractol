@@ -6,11 +6,11 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 09:20:58 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 15:10:27 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 15:28:11 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractal.h"
+#include "fractol.h"
 
 void	pixel_in_buffer(unsigned char *buffer, int x, int y, int color)
 {

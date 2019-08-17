@@ -6,11 +6,11 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 16:00:23 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 15:19:34 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 15:35:04 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractal.h"
+#include "fractol.h"
 
 int		pick_color(int iter)
 {
@@ -39,9 +39,9 @@ int		key_press(int key, void *param)
 	else if (key == ARROW_RIGHT)
 		move(-0.1, 0.0, fr);
 	else if (key == MAIN_PAD_W)
-		zoom(fr, 0.90909090909);
+		zoom(fr, ZOOM_IN);
 	else if (key == MAIN_PAD_S)
-		zoom(fr, 1.1);
+		zoom(fr, ZOOM_OUT);
 	else if (key == MAIN_PAD_Q || key == MAIN_PAD_E)
 		transform_julia(key, fr);
 	else if (key == SPACE)

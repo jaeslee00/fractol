@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractal.h                                          :+:      :+:    :+:   */
+/*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 16:00:52 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 15:17:40 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 15:34:55 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTAL_H
-# define FRACTAL_H
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
 # include <stdint.h>
 # include <math.h>
 # include "mlx.h"
 # include "libft.h"
+
 # define WIN_WIDTH			500
 # define WIN_HEIGHT			500
 # define SUCCESS			1
@@ -36,7 +37,8 @@
 # define KEY_PRESS			2
 # define MOUSE_PRESS		5
 # define MOUSE_MOVE			6
-# define ZOOM				1.1
+# define ZOOM_OUT			1.1
+# define ZOOM_IN			0.90909090909
 # define MAX_ITER			100
 # define MOUSE_ON			1
 # define MOUSE_OFF			0

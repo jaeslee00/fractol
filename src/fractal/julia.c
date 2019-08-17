@@ -6,11 +6,11 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 09:23:23 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 15:19:50 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 15:28:13 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractal.h"
+#include "fractol.h"
 
 int		julia_set(double real, double img, t_complex *c)
 {

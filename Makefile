@@ -1,4 +1,4 @@
-NAME = fract
+NAME = fractol
 
 SRC =	main.c \
 		key_inputs.c \
@@ -11,7 +11,7 @@ SRC =	main.c \
 
 OBJ = $(patsubst %.c, obj/%.o, $(SRC))
 
-HEADER = ./includes/fractal.h \
+HEADER = ./includes/fractol.h \
 		 ./libft/includes/libft.h
 
 INCLUDE_PATH = -I ./includes -I ./libft/includes -I /Users/jaeslee/Downloads/minilibx_macos

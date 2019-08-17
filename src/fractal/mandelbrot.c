@@ -6,11 +6,11 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 01:37:32 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 15:13:45 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 15:28:14 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractal.h"
+#include "fractol.h"
 
 int		mandelbrot_set(t_complex *c)
 {

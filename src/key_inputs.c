@@ -6,11 +6,11 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 09:06:47 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 15:11:56 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 15:28:15 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractal.h"
+#include "fractol.h"
 
 void	zoom(t_fractal *fr, double z)
 {
