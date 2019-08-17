@@ -1,7 +1,12 @@
 NAME = fract
 
 SRC =	main.c \
-		fractal.c
+		key_inputs.c \
+		mouse_inputs.c \
+		draw_to_buffer.c \
+		fractal/mandelbrot.c \
+		fractal/julia.c \
+		fractal/burning_ship.c
 
 OBJ = $(patsubst %.c, obj/%.o, $(SRC))
 
@@ -14,13 +19,13 @@ LIBFT =	libft/libft.a
 
 HEADER_MLX = -I /usr/local/include/
 
-LIB_MLX = -L /Users/jaeslee/Downloads/minilibx_macos
+LIB_MLX = -L /usr/local/lib/
 
 MLX = -lmlx -framework OpenGL -framework AppKit
 
 CC = gcc
 
-CFLAGS := $(CFLAGS) -Wall -Wextra -Werror -O3 #-fsanitize=address -g
+CFLAGS := $(CFLAGS) -Wall -Wextra -Werror #-fsanitize=address -g
 
 all: $(NAME)
 
@@ -29,6 +34,7 @@ $(NAME): $(LIBFT) $(OBJ) $(HEADER)
 
 obj:
 	mkdir -p obj
+	mkdir -p obj/fractal
 
 obj/%.o: src/%.c $(LIBFT) | obj
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE_PATH) $(HEADER_MLX)
