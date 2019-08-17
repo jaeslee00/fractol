@@ -1,6 +1,7 @@
 NAME = fract
 
 SRC =	main.c \
+		fractal.c
 
 OBJ = $(patsubst %.c, obj/%.o, $(SRC))
 
@@ -19,7 +20,7 @@ MLX = -lmlx -framework OpenGL -framework AppKit
 
 CC = gcc
 
-CFLAGS := $(CFLAGS) -Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS := $(CFLAGS) -Wall -Wextra -Werror -O3 #-fsanitize=address -g
 
 all: $(NAME)
 

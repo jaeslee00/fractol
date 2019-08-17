@@ -6,7 +6,7 @@
 #    By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/06 15:42:12 by aamadori          #+#    #+#              #
-#    Updated: 2019/08/16 18:07:02 by jaelee           ###   ########.fr        #
+#    Updated: 2019/08/17 05:42:31 by jaelee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,7 +117,7 @@ OBJS = $(patsubst %.c,obj/%.o,$(SRCS))
 CC = gcc
 ifndef CFLAGS_WARNINGS
 export CFLAGS_WARNINGS = 1
-export CFLAGS := $(CFLAGS) -Wall -Wextra -Werror
+export CFLAGS := $(CFLAGS) -Wall -Wextra -Werror -O3
 endif
 INCLUDES = includes/libft.h \
 		includes/list.h \
