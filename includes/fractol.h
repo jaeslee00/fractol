@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 16:00:52 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 15:34:55 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 15:41:14 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,6 @@
 # define MAX_ITER			100
 # define MOUSE_ON			1
 # define MOUSE_OFF			0
-
-typedef struct	s_pixel
-{
-	double real;
-	double img;
-	int		iter;
-}				t_pixel;
 
 typedef struct	s_complex
 {
