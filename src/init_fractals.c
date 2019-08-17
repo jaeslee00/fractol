@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 14:53:42 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 15:18:53 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/17 15:24:25 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	init_mandelbrot(t_fractal *fr)
 
 void	init_julia(t_fractal *fr)
 {
-	fr->real_max = -1.0;
-	fr->real_min = 2.0;
+	fr->real_max = -1.5;
+	fr->real_min = 1.5;
 	fr->img_max = 1.5;
 	fr->img_min = -1.5;
 	fr->zoom = 1.0;
