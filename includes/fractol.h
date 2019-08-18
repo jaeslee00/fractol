@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 16:00:52 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/17 15:41:14 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/18 11:34:44 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@
 
 # define WIN_WIDTH			500
 # define WIN_HEIGHT			500
+# define ZOOM_OUT			1.1
+# define ZOOM_IN			0.90909090909
+# define MAX_ITER			100
+
 # define SUCCESS			1
 # define FAIL				0
+
 # define ARROW_UP			126
 # define ARROW_DOWN			125
 # define ARROW_LEFT			123
@@ -35,13 +40,11 @@
 # define SPACE				49
 # define ESC				53
 # define KEY_PRESS			2
-# define MOUSE_PRESS		5
+
+# define SCROLL_UP			4
+# define SCROLL_DOWN		5
+# define MOUSE_PRESS		4
 # define MOUSE_MOVE			6
-# define ZOOM_OUT			1.1
-# define ZOOM_IN			0.90909090909
-# define MAX_ITER			100
-# define MOUSE_ON			1
-# define MOUSE_OFF			0
 
 typedef struct	s_complex
 {
@@ -109,7 +112,6 @@ void	move(double x, double y, t_fractal *fr);
 void	transform_julia(int key, t_fractal *fr);
 void	reset(t_fractal *fr);
 
-int		mouse_press(int button, void *param);
-int		mouse_release(int button, void *param);
+int		mouse_press(int button, int x, int y, void *param);
 int		mouse_move(int x,int y, void *param);
 #endif
