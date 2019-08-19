@@ -1,6 +1,6 @@
 NAME = fractol
 
-SRC =	main.c \
+SRCS =	main.c \
 		key_inputs.c \
 		mouse_inputs.c \
 		draw_to_buffer.c \
@@ -9,9 +9,9 @@ SRC =	main.c \
 		fractal/julia.c \
 		fractal/burning_ship.c
 
-OBJ = $(patsubst %.c, obj/%.o, $(SRC))
+OBJS = $(patsubst %.c, obj/%.o, $(SRCS))
 
-HEADER = ./includes/fractol.h \
+INCLUDES = ./includes/fractol.h \
 		 ./libft/includes/libft.h
 
 INCLUDE_PATH = -I ./includes -I ./libft/includes -I /Users/jaeslee/Downloads/minilibx_macos
@@ -26,18 +26,20 @@ MLX = -lmlx -framework OpenGL -framework AppKit
 
 CC = gcc
 
-CFLAGS := $(CFLAGS) -Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS := $(CFLAGS) -Wall -Wextra -Werror
+
+.PHONY : all, re, clean, flcean
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ) $(HEADER)
-	$(CC) $(CFLAGS) $(INCLUDE_PATH) $(OBJ) -o $(NAME) $(LIBFT) $(LIB_MLX) $(MLX)
+$(NAME): $(LIBFT) $(OBJS) $(INCLUDES)
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) $(OBJS) -o $(NAME) $(LIBFT) $(LIB_MLX) $(MLX)
 
 obj:
 	mkdir -p obj
 	mkdir -p obj/fractal
 
-obj/%.o: src/%.c $(LIBFT) | obj
+obj/%.o: src/%.c $(LIBFT) $(INCLUDES) | obj
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE_PATH) $(HEADER_MLX)
 
 
@@ -54,4 +56,3 @@ fclean: clean
 
 re: fclean all
 
-.PHONY : all, re, clean, flcean

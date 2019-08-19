@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 09:06:47 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/18 11:30:08 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/19 16:19:28 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,30 @@ void	transform_julia(int key, t_fractal *fr)
 
 void	reset(t_fractal *fr)
 {
-	fr->init_fract(fr);
+	fr->fract_init(fr);
+}
+
+int		key_press(int key, void *param)
+{
+	t_fractal *fr;
+
+	fr = (t_fractal*)param;
+	if (key == MAIN_PAD_W)
+		move(0.0, 0.1, fr);
+	else if (key == MAIN_PAD_S)
+		move(0.0, -0.1, fr);
+	else if (key == MAIN_PAD_A)
+		move(0.1, 0.0, fr);
+	else if (key == MAIN_PAD_D)
+		move(-0.1, 0.0, fr);
+	else if (key == NBR_PAD_PLUS)
+		zoom(fr, ZOOM_IN);
+	else if (key == NBR_PAD_MINUS)
+		zoom(fr, ZOOM_OUT);
+	else if (key == SPACE)
+		reset(fr);
+	else if (key == ESC)
+		exit(0);
+	fr->fract_draw(fr);
+	return (0);
 }

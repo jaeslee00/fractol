@@ -6,7 +6,7 @@
 #    By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/06 15:42:12 by aamadori          #+#    #+#              #
-#    Updated: 2019/08/17 05:42:31 by jaelee           ###   ########.fr        #
+#    Updated: 2019/08/19 16:35:56 by jaelee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,10 +115,9 @@ SRCS = ft_memset.c \
 OBJS = $(patsubst %.c,obj/%.o,$(SRCS))
 
 CC = gcc
-ifndef CFLAGS_WARNINGS
-export CFLAGS_WARNINGS = 1
-export CFLAGS := $(CFLAGS) -Wall -Wextra -Werror -O3
-endif
+
+CFLAGS := $(CFLAGS) -Wall -Wextra -Werror
+
 INCLUDES = includes/libft.h \
 		includes/list.h \
 		includes/get_next_line.h \
@@ -126,7 +125,8 @@ INCLUDES = includes/libft.h \
 		includes/queue.h \
 		includes/tree.h \
 		includes/ft_assert.h
-INCLUDE_FOLDERS = -Iincludes/
+INCLUDE_FOLDERS = -I includes/
+
 NAME = libft.a
 
 .PHONY: clean fclean re all
