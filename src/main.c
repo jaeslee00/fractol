@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 16:00:23 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/19 16:42:57 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/19 16:57:28 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,14 @@ void	get_fractal(t_fractal *fr, char *argv)
 int		main(int argc, char **argv)
 {
 	t_fractal	fr;
+	int			ret;
 
+	ret = 0;
 	ft_bzero(&fr, sizeof(t_fractal));
 	if (argc == 2)
 	{
 		get_fractal(&fr, argv[1]);
-		init_mlx(&fr, argv[1]);
+		ret = init_mlx(&fr, argv[1]);
 		fr.fract_init(&fr);
 		fr.fract_draw(&fr);
 		mlx_hook(fr.win_ptr, KEY_PRESS, 0, key_press, &fr);
@@ -67,5 +69,10 @@ int		main(int argc, char **argv)
 	}
 	else
 		ft_putendl("usage : ./fractol [fractal_name]");
+	if (ret == 1)
+	{
+		mlx_destroy_image(fr.mlx_ptr, fr.img_ptr);
+		mlx_destroy_window(fr.mlx_ptr, fr.win_ptr);
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 09:06:47 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/19 16:19:28 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/19 16:51:18 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,11 @@ int		key_press(int key, void *param)
 	else if (key == SPACE)
 		reset(fr);
 	else if (key == ESC)
+	{
+		mlx_destroy_image(fr->mlx_ptr, fr->img_ptr);
+		mlx_destroy_window(fr->mlx_ptr, fr->win_ptr);
 		exit(0);
+	}
 	fr->fract_draw(fr);
 	return (0);
 }

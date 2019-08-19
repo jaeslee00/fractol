@@ -6,7 +6,7 @@
 /*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 16:00:52 by jaelee            #+#    #+#             */
-/*   Updated: 2019/08/19 16:30:35 by jaelee           ###   ########.fr       */
+/*   Updated: 2019/08/19 16:58:40 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void			get_fractal(t_fractal *fr, char *argv);
 void			init_mandelbrot(t_fractal *fr);
 void			init_julia(t_fractal *fr);
 void			init_buringship(t_fractal *fr);
-void			init_mlx(t_fractal *fr, char *argv);
+int				init_mlx(t_fractal *fr, char *argv);
 
 void			mandelbrot_draw(t_fractal *fr);
 int				mandelbrot_set(t_complex *c);
