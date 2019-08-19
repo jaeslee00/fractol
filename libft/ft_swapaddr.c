@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_readbuff.c                                      :+:      :+:    :+:   */
+/*   ft_swapaddr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamadori <aamadori@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaelee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 13:13:23 by aamadori          #+#    #+#             */
-/*   Updated: 2018/12/06 11:16:37 by aamadori         ###   ########.fr       */
+/*   Created: 2018/11/13 11:41:59 by jaelee            #+#    #+#             */
+/*   Updated: 2018/11/13 11:43:14 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
-ssize_t	ft_readbuff(int fd, char *buff, size_t len)
+void	ft_swapaddr(char **a, char **b)
 {
-	ssize_t	bytes;
-	size_t	index;
+	char *c;
 
-	index = 0;
-	while (index < len
-		&& (bytes = read(fd, buff + index, len - index)) > 0)
-	{
-		index += bytes;
-	}
-	if (bytes < 0)
-		return (bytes);
-	return (index);
+	c = *a;
+	*a = *b;
+	*b = c;
+	return ;
 }

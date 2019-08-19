@@ -3,72 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamadori <aamadori@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaelee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 18:16:27 by aamadori          #+#    #+#             */
-/*   Updated: 2019/06/06 15:43:58 by aamadori         ###   ########.fr       */
+/*   Created: 2018/11/09 17:03:00 by jaelee            #+#    #+#             */
+/*   Updated: 2018/11/25 19:38:32 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_assert.h"
-#include <stdlib.h>
 
-static size_t	count_words(char const *s, char c)
+char	**ft_strsplit(char const *s, char c)
 {
-	size_t index;
-	size_t words;
-
-	index = 0;
-	words = 0;
-	if (!s)
-		return (0);
-	while (s[index])
-	{
-		while (s[index] && s[index] == c)
-			index++;
-		if (s[index])
-			words++;
-		while (s[index] && s[index] != c)
-			index++;
-	}
-	return (words);
-}
-
-static size_t	word_length(char const *s, char c)
-{
-	size_t length;
-
-	length = 0;
-	while (s[length] && s[length] != c)
-		length++;
-	return (length);
-}
-
-char			**ft_strsplit(char const *s, char c)
-{
+	int		i;
+	int		j;
+	int		start;
+	int		end;
 	char	**array;
-	size_t	index;
-	size_t	word_index;
 
-	array = (char**)malloc(sizeof(char*) * (count_words(s, c) + 1));
-	ft_malloc_assert(array);
-	if (array)
+	if (!(s && c) || (i = 0))
+		return (NULL);
+	j = 0;
+	if (!(array = (char **)malloc(sizeof(char *) * ft_strlen(s))))
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		index = 0;
-		word_index = 0;
-		while (s && s[index])
-		{
-			while (s[index] && s[index] == c)
-				index++;
-			if (s[index])
-			{
-				array[word_index] = ft_strnew(word_length(&s[index], c));
-				ft_strncpy(array[word_index++], &s[index],
-						word_length(&s[index], c));
-			}
-		}
-		array[word_index] = 0;
+		while (s[i] == c && s[i] != '\0')
+			i++;
+		start = i;
+		while (s[i] != c && s[i] != '\0')
+			i++;
+		end = i;
+		if (end > start)
+			if (!(array[j++] = ft_strsub(s, start, end - start)))
+				return (NULL);
 	}
+	array[j] = (NULL);
 	return (array);
 }

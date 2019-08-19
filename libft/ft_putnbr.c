@@ -3,34 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamadori <aamadori@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaelee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 19:30:32 by aamadori          #+#    #+#             */
-/*   Updated: 2019/06/06 15:43:37 by aamadori         ###   ########.fr       */
+/*   Created: 2018/11/10 11:53:15 by jaelee            #+#    #+#             */
+/*   Updated: 2018/11/11 12:18:36 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+void		ft_putnbr(int n)
 {
-	int		divisor;
-	char	first_digit;
+	unsigned int	tmp;
 
-	if (n < 0)
-		ft_putchar('-');
-	divisor = 1000000000;
-	first_digit = 0;
-	while (divisor > 0)
+	tmp = 0;
+	if (n >= 0)
+		tmp = n;
+	else if (n < 0)
 	{
-		if (first_digit || ft_abs(n / divisor) > 0)
-		{
-			ft_putchar(ft_abs(n / divisor) + '0');
-			n -= (n / divisor) * divisor;
-			first_digit = 1;
-		}
-		divisor /= 10;
+		ft_putchar('-');
+		tmp = (unsigned int)(n * (-1));
 	}
-	if (!first_digit)
-		ft_putchar('0');
+	if (tmp > 9)
+	{
+		ft_putnbr(tmp / 10);
+		ft_putchar((tmp % 10) + '0');
+	}
+	else
+		ft_putchar(tmp + '0');
 }

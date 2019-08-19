@@ -26,7 +26,7 @@ MLX = -lmlx -framework OpenGL -framework AppKit
 
 CC = gcc
 
-CFLAGS := $(CFLAGS) -Wall -Wextra -Werror
+CFLAGS := $(FLAGS) -Wall -Wextra -Werror
 
 .PHONY : all, re, clean, flcean
 

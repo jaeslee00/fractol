@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_splitdel.c                                      :+:      :+:    :+:   */
+/*   ft_factorial.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamadori <aamadori@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaelee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/03 21:57:33 by aamadori          #+#    #+#             */
-/*   Updated: 2019/02/03 21:59:22 by aamadori         ###   ########.fr       */
+/*   Created: 2018/11/13 16:45:26 by jaelee            #+#    #+#             */
+/*   Updated: 2018/11/13 16:46:52 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_splitdel(char **split)
+int	ft_factorial(int n)
 {
-	size_t index;
-
-	if (!split)
-		return ;
-	index = 0;
-	while (split[index])
-	{
-		free(split[index]);
-		index++;
-	}
-	free(split);
+	if (n < 0 || n > 12)
+		return (0);
+	if (n == 0 || n == 1)
+		return (1);
+	return (n * ft_factorial(n - 1));
 }

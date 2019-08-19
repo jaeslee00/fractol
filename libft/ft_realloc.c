@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaelee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 13:58:12 by jaelee            #+#    #+#             */
-/*   Updated: 2018/11/11 13:57:11 by jaelee           ###   ########.fr       */
+/*   Created: 2018/11/13 11:33:36 by jaelee            #+#    #+#             */
+/*   Updated: 2018/11/21 14:52:37 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strequ(char const *s1, char const *s2)
+void	*ft_realloc(void *ptr, size_t size)
 {
-	if (s1 && s2)
+	void	*tmp;
+
+	tmp = NULL;
+	if (ptr && !size)
 	{
-		if (ft_strcmp(s1, s2) == 0)
-			return (1);
-		else
-			return (0);
+		if (!(tmp = (char *)ft_memalloc(1)))
+			return (NULL);
+		ft_memdel(&ptr);
 	}
-	return (-1);
+	else if (size)
+	{
+		if (!(tmp = (char *)ft_memalloc(size)))
+			return (NULL);
+		if (ptr)
+		{
+			ft_memcpy(tmp, ptr, size);
+			ft_memdel(&ptr);
+		}
+	}
+	return (tmp);
 }

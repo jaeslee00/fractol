@@ -5,71 +5,75 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/06/06 15:42:12 by aamadori          #+#    #+#              #
-#    Updated: 2019/08/19 16:35:56 by jaelee           ###   ########.fr        #
+#    Created: 2018/11/08 17:30:16 by jaelee            #+#    #+#              #
+#    Updated: 2019/08/19 17:07:54 by jaelee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_memset.c \
+SRCS =	ft_atoi.c \
 		ft_bzero.c \
-		ft_memcpy.c \
+		ft_isalnum.c \
+		ft_isalpha.c \
+		ft_isascii.c \
+		ft_isdigit.c \
+		ft_islower.c \
+		ft_isprint.c \
+		ft_isupper.c \
+		ft_itoa.c \
+		ft_memalloc.c \
 		ft_memccpy.c \
-		ft_memmove.c \
-		ft_putchar.c \
-		ft_putstr.c \
-		ft_strlen.c \
 		ft_memchr.c \
 		ft_memcmp.c \
-		ft_strdup.c \
-		ft_strcpy.c \
-		ft_strncpy.c \
-		ft_strcat.c \
-		ft_strncat.c \
-		ft_strlcat.c \
-		ft_strchr.c \
-		ft_strrchr.c \
-		ft_strcmp.c \
-		ft_strncmp.c \
-		ft_strstr.c \
-		ft_strnstr.c \
-		ft_isdigit.c \
-		ft_isalpha.c \
-		ft_isalnum.c \
-		ft_atoi.c \
-		ft_isascii.c \
-		ft_isprint.c \
-		ft_tolower.c \
-		ft_toupper.c \
-		ft_memalloc.c \
+		ft_memcpy.c \
 		ft_memdel.c \
-		ft_strnew.c \
-		ft_strdel.c \
+		ft_memmove.c \
+		ft_memset.c \
+		ft_putchar.c \
+		ft_putchar_fd.c \
+		ft_putendl.c \
+		ft_putendl_fd.c \
+		ft_putnbr.c \
+		ft_putnbr_fd.c \
+		ft_putstr.c \
+		ft_putstr_fd.c \
+		ft_strcat.c \
+		ft_strchr.c \
 		ft_strclr.c \
+		ft_strcmp.c \
+		ft_strcpy.c \
+		ft_strdel.c \
+		ft_strdup.c \
+		ft_strequ.c \
 		ft_striter.c \
 		ft_striteri.c \
+		ft_strjoin.c \
+		ft_strlcat.c \
+		ft_strlen.c \
 		ft_strmap.c \
 		ft_strmapi.c \
-		ft_strequ.c \
+		ft_strncat.c \
+		ft_strncmp.c \
+		ft_strncpy.c \
 		ft_strnequ.c \
-		ft_strsub.c \
-		ft_strjoin.c \
-		ft_isspace.c \
-		ft_isupper.c \
-		ft_islower.c \
-		ft_itoa.c \
-		ft_putnbr.c \
-		ft_putendl.c \
-		ft_strtrim.c \
+		ft_strnew.c \
+		ft_strnstr.c \
+		ft_strrchr.c \
 		ft_strsplit.c \
-		ft_putchar_fd.c \
-		ft_putstr_fd.c \
-		ft_putendl_fd.c \
-		ft_putnbr_fd.c \
-		ft_splitdel.c \
-		ft_readbuff.c \
-		ft_assert.c \
-		free_stub.c \
-		read_whole.c \
+		ft_strstr.c \
+		ft_strsub.c \
+		ft_strtrim.c \
+		ft_tolower.c \
+		ft_toupper.c \
+		ft_realloc.c \
+		ft_swapaddr.c \
+		ft_pow.c \
+		ft_factorial.c \
+		ft_putnbr_base.c \
+		ft_strlcpy.c \
+		ft_strndup.c \
+		ft_min.c \
+		ft_max.c \
+		get_next_line.c \
 		list/list_new.c \
 		list/list_delone.c \
 		list/list_del.c \
@@ -104,29 +108,18 @@ SRCS = ft_memset.c \
 		tree/tree_pre_traverse.c \
 		tree/tree_in_traverse.c \
 		tree/tree_post_traverse.c \
-		ft_abs.c \
-		ft_max.c \
-		ft_min.c \
-		ft_sqrt.c \
-		ft_itoa_base.c \
-		ft_witomb.c \
-		get_next_line.c \
-		get_next_line_mem.c
+		priority_queue/priority_queue.c
 OBJS = $(patsubst %.c,obj/%.o,$(SRCS))
-
 CC = gcc
-
-CFLAGS := $(CFLAGS) -Wall -Wextra -Werror
-
+CFLAGS := $(FLAGS) -Wall -Wextra -Werror
 INCLUDES = includes/libft.h \
 		includes/list.h \
 		includes/get_next_line.h \
 		includes/array.h \
 		includes/queue.h \
 		includes/tree.h \
-		includes/ft_assert.h
-INCLUDE_FOLDERS = -I includes/
-
+		includes/priority_queue.h
+INCLUDE_FOLDERS = -Iincludes/
 NAME = libft.a
 
 .PHONY: clean fclean re all
@@ -134,7 +127,7 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar crs $@ $^
+	ar rc $@ $^
 
 obj:
 	mkdir -p obj
@@ -142,6 +135,7 @@ obj:
 	mkdir -p obj/array
 	mkdir -p obj/queue
 	mkdir -p obj/tree
+	mkdir -p obj/priority_queue
 
 obj/%.o: %.c $(INCLUDES) | obj
 	gcc $(CFLAGS) $(INCLUDE_FOLDERS) -c $< -o $@

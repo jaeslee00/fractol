@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamadori <aamadori@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaelee <jaelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 12:34:10 by aamadori          #+#    #+#             */
-/*   Updated: 2019/05/27 18:44:09 by aamadori         ###   ########.fr       */
+/*   Updated: 2019/03/05 02:33:15 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct	s_list
 	struct s_list	*prev;
 }				t_list;
 
+# define LST_CONT(list, type) (*(type*)(list)->content)
+
 size_t			list_length(t_list *list);
 t_list			*list_new(void const *content, size_t content_size);
 void			list_swap(t_list *a, t_list *b);
@@ -36,6 +38,5 @@ t_list			*list_search(t_list *lst, const void *ref, t_comparison cmp);
 t_list			*list_rem(t_list **lst, const void *ref, t_comparison cmp);
 void			list_append(t_list **lst, t_list *node);
 void			list_rollback(t_list **lst);
-t_list			*list_back(t_list *list);
 
 #endif

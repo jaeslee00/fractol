@@ -3,64 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamadori <aamadori@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaelee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 18:41:28 by aamadori          #+#    #+#             */
-/*   Updated: 2019/06/06 15:43:22 by aamadori         ###   ########.fr       */
+/*   Created: 2018/11/08 17:54:22 by jaelee            #+#    #+#             */
+/*   Updated: 2018/11/11 12:11:32 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-static size_t	digits(int n)
+static int		ft_digit(int n)
 {
-	size_t	digits;
+	int	cnt;
+	int	tmp;
 
-	digits = 1;
-	while (ft_abs(n) > 9)
+	tmp = n;
+	cnt = 0;
+	while (tmp)
 	{
-		n /= 10;
-		digits++;
+		tmp /= 10;
+		cnt++;
 	}
-	if (n >= 0)
-		return (digits);
-	else
-		return (digits + 1);
+	if (cnt == 0)
+		return (1);
+	else if (n < 0)
+		return (cnt + 1);
+	return (cnt);
 }
 
-static void		generate_string(char *str, int n)
+static char		*ft_nbr_to_char(int n, char *val, int len)
 {
-	size_t	str_index;
-	int		divisor;
-	char	first_digit;
+	int	tmp;
 
-	str_index = 0;
-	if (n < 0)
-		str[str_index++] = '-';
-	divisor = 1000000000;
-	first_digit = 0;
-	while (divisor > 0)
+	tmp = n;
+	val[len] = '\0';
+	while (len >= 0)
 	{
-		if (first_digit || ft_abs(n / divisor) > 0)
+		len--;
+		if (n < 0)
 		{
-			str[str_index++] = ft_abs(n / divisor) + '0';
-			n -= (n / divisor) * divisor;
-			first_digit = 1;
+			val[len] = ((tmp % 10) * (-1) + '0');
+			tmp /= 10;
 		}
-		divisor /= 10;
+		else
+		{
+			val[len] = ((tmp % 10) + '0');
+			tmp /= 10;
+		}
+		if (n < 0)
+			val[0] = '-';
 	}
-	if (!first_digit)
-		str[str_index] = '0';
+	return (val);
 }
 
 char			*ft_itoa(int n)
 {
-	char	*str;
+	char	*val;
+	int		len;
 
-	str = ft_strnew(digits(n));
-	if (!str)
+	len = ft_digit(n);
+	val = ft_memalloc(len + 1);
+	if (!(val))
 		return (NULL);
-	generate_string(str, n);
-	return (str);
+	val = ft_nbr_to_char(n, val, len);
+	return (val);
 }

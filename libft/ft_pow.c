@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_back.c                                        :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamadori <aamadori@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaelee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/21 13:58:39 by aamadori          #+#    #+#             */
-/*   Updated: 2019/03/21 13:59:44 by aamadori         ###   ########.fr       */
+/*   Created: 2018/11/13 11:43:19 by jaelee            #+#    #+#             */
+/*   Updated: 2018/11/13 11:47:40 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "libft.h"
 
-t_list	*list_back(t_list *list)
+int	ft_pow(int a, int b)
 {
-	t_list	*last;
-
-	while (list)
-	{
-		last = list;
-		list = list->next;
-	}
-	return (last);
+	if (a == 0 || b < 0)
+		return (0);
+	if (a == 1 || b == 0)
+		return (1);
+	return (a * ft_pow(a, (b - 1)));
 }

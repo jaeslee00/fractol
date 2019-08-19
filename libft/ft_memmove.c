@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamadori <aamadori@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaelee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 18:10:19 by aamadori          #+#    #+#             */
-/*   Updated: 2018/12/06 11:16:00 by aamadori         ###   ########.fr       */
+/*   Created: 2018/11/07 13:36:35 by jaelee            #+#    #+#             */
+/*   Updated: 2018/11/25 19:34:59 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,25 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t	index;
+	unsigned char *tmp1;
+	unsigned char *tmp2;
 
-	if (src < dst && src + len > dst)
+	tmp1 = (unsigned char *)dst;
+	tmp2 = (unsigned char *)src;
+	if (tmp1 > tmp2)
 	{
-		while (len-- > 0)
-			((char*)dst)[len] = ((char*)src)[len];
+		while (len > 0)
+		{
+			*(tmp1 + len - 1) = *(tmp2 + len - 1);
+			len--;
+		}
 	}
 	else
 	{
-		index = 0;
-		while (index < len)
+		while (len > 0)
 		{
-			((char*)dst)[index] = ((char*)src)[index];
-			index++;
+			*tmp1++ = *tmp2++;
+			len--;
 		}
 	}
 	return (dst);

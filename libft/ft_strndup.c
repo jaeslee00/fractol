@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaelee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 13:58:12 by jaelee            #+#    #+#             */
-/*   Updated: 2018/11/11 13:57:11 by jaelee           ###   ########.fr       */
+/*   Created: 2018/11/13 17:23:10 by jaelee            #+#    #+#             */
+/*   Updated: 2018/11/24 21:25:20 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strequ(char const *s1, char const *s2)
+char		*ft_strndup(const char *s1, size_t n)
 {
-	if (s1 && s2)
+	char	*tmp;
+	size_t	i;
+	size_t	len;
+
+	len = ft_strlen(s1) + 1;
+	i = 0;
+	if (!(tmp = (char*)malloc(sizeof(char) * ft_min(n + 1, len))))
+		return (NULL);
+	while (s1[i] != '\0' && i < n)
 	{
-		if (ft_strcmp(s1, s2) == 0)
-			return (1);
-		else
-			return (0);
+		tmp[i] = s1[i];
+		i++;
 	}
-	return (-1);
+	tmp[i] = '\0';
+	return (tmp);
 }

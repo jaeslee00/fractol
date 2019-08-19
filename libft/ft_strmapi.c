@@ -3,35 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamadori <aamadori@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaelee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 17:51:49 by aamadori          #+#    #+#             */
-/*   Updated: 2019/05/28 17:43:06 by aamadori         ###   ########.fr       */
+/*   Created: 2018/11/09 13:20:12 by jaelee            #+#    #+#             */
+/*   Updated: 2018/11/11 13:56:48 by jaelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_assert.h"
-#include <stdlib.h>
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	index;
-	char	*new;
+	size_t	i;
+	size_t	len;
+	char	*ptr;
 
-	new = NULL;
-	if (s)
+	if (!(s && f))
+		return (NULL);
+	i = 0;
+	len = ft_strlen(s);
+	if (!(ptr = ft_memalloc(len + 1)))
+		return (NULL);
+	while (i < len)
 	{
-		index = 0;
-		new = (char*)malloc(ft_strlen(s) + 1);
-		ft_malloc_assert(new);
-		while (new && s[index])
-		{
-			new[index] = f(index, s[index]);
-			index++;
-		}
-		if (new)
-			new[index] = '\0';
+		ptr[i] = f(i, s[i]);
+		i++;
 	}
-	return (new);
+	ptr[i] = '\0';
+	return (ptr);
 }

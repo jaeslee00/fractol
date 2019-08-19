@@ -6,7 +6,7 @@
 /*   By: aamadori <aamadori@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 23:58:18 by aamadori          #+#    #+#             */
-/*   Updated: 2019/03/31 16:27:40 by aamadori         ###   ########.fr       */
+/*   Updated: 2019/01/20 12:44:44 by aamadori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ t_list	*list_new(void const *content, size_t content_size)
 	{
 		ret->content = malloc(content_size);
 		if (!ret->content)
-		{
-			free(ret);
 			return (NULL);
-		}
 		ft_memcpy(ret->content, content, content_size);
 	}
 	else
